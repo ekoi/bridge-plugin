@@ -5,6 +5,9 @@ import nl.knaw.dans.dataverse.bridge.plugin.exception.BridgeException;
 import java.io.InputStream;
 import java.util.Optional;
 
+/*
+ * Created by Eko Indarto
+ */
 public interface IResponseData {
     public void init(InputStream inputStream) throws BridgeException;
     public String getState();

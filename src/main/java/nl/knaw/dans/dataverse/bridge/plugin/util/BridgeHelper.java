@@ -38,7 +38,7 @@ https://github.com/DANS-KNAW/easy-sword2-dans-examples/blob/master/src/main/java
 
 public class BridgeHelper {
     static final String BAGIT_URI = "http://purl.org/net/sword/package/BagIt";
-    static final BagFactory bagFactory = new BagFactory();
+   // static final BagFactory bagFactory = new BagFactory();
     private static final Logger LOG = LoggerFactory.getLogger(BridgeHelper.class);
 
     public static void zipDirectory(File dir, File zipFile) throws ZipException {
@@ -50,6 +50,7 @@ public class BridgeHelper {
 
 
     public static CloseableHttpClient createHttpClient(URI uri, String uid, String pw, int timeout) {
+        LOG.info("Create HttpClient for " + uri);
         RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout).setConnectionRequestTimeout(timeout).setSocketTimeout(timeout).build();
         BasicCredentialsProvider credsProv = new BasicCredentialsProvider();
         credsProv.setCredentials(new AuthScope(uri.getHost(), uri.getPort()), new UsernamePasswordCredentials(uid, pw));
@@ -57,6 +58,7 @@ public class BridgeHelper {
     }
 
     public static CloseableHttpResponse sendChunk(DigestInputStream dis, int size, String method, URI uri, String filename, String mimeType, CloseableHttpClient http, boolean inProgress) throws IOException {
+        LOG.info("Send chunk file with filename: " + filename + " with size: " + size + " to " + uri);
         byte[] chunk = readChunk(dis, size);
         String md5 = new String(Hex.encodeHex(dis.getMessageDigest().digest()));
         HttpUriRequest request = RequestBuilder.create(method).setUri(uri).setConfig(RequestConfig.custom()
@@ -98,9 +100,5 @@ public class BridgeHelper {
     public static <T extends Enum<T>> Optional<T> valueOf(Class<T> clazz, String name) {
         return EnumSet.allOf(clazz).stream().filter(v -> v.name().equals(name))
                 .findAny();
-    }
-
-    public String helloEko(){
-        return "HELLOOOO";
     }
 }
