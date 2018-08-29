@@ -34,11 +34,6 @@ public class TdrPluginConf {
         this.tdrName = tdrName;
     }
 
-    public TdrPluginConf actionClassName(String actionClassName) {
-        this.actionClassName = actionClassName;
-        return this;
-    }
-
     public URLClassLoader getActionClassLoader() {
         return actionClassLoader;
     }
@@ -56,21 +51,6 @@ public class TdrPluginConf {
     }
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(tdrName, actionClassName, xsl);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class TdrConf {\n");
-        sb.append("    tdrName: ").append(toIndentedString(tdrName)).append("\n");
-        sb.append("    actionClassName: ").append(toIndentedString(actionClassName)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
     public List<XslStreamSource> getXsl() {
         return xsl;
     }
@@ -79,15 +59,5 @@ public class TdrPluginConf {
         this.xsl = xsl;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
 

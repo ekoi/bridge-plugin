@@ -20,5 +20,4 @@ public interface IAction {
     }
 
     IResponseData execute(Optional<File> bagitZipFile, IRI colIri, String uid, Optional<String> pwd) throws BridgeException;
-    void save() throws BridgeException;
 }
