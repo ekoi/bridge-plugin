@@ -1,37 +1,35 @@
 package nl.knaw.dans.dataverse.bridge.plugin.common;
 
 import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
- * TdrConf
+ * DarPluginConf
  * Created by Eko Indarto
  */
 
-public class TdrPluginConf {
-    private String tdrName;
+public class DarPluginConf {
+    private String darName;
     private String actionClassName;
     private URLClassLoader actionClassLoader;
     private List<XslStreamSource> xsl;
 
-    public TdrPluginConf() {
+    public DarPluginConf() {
     }
 
-    public TdrPluginConf(String tdrName, String actionClassName, URLClassLoader actionClassLoader, List<XslStreamSource> xsl) {
-        this.tdrName = tdrName;
+    public DarPluginConf(String darName, String actionClassName, URLClassLoader actionClassLoader, List<XslStreamSource> xsl) {
+        this.darName = darName;
         this.actionClassName = actionClassName;
         this.actionClassLoader = actionClassLoader;
         this.xsl = xsl;
     }
 
-    public String getTdrName() {
-        return tdrName;
+    public String getDarName() {
+        return darName;
     }
 
-    public void setTdrName(String tdrName) {
-        this.tdrName = tdrName;
+    public void setDarName(String darName) {
+        this.darName = darName;
     }
 
     public URLClassLoader getActionClassLoader() {
